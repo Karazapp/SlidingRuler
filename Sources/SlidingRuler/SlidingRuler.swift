@@ -147,7 +147,7 @@ public struct SlidingRuler<V>: View where V: BinaryFloatingPoint, V.Stride: Bina
         (renderedValue, renderedOffset) = renderingValues()
 
         return FlexibleWidthContainer {
-            VStack(spacing: 4) {
+            VStack(spacing: 8) {
                 Path { path in
                     let c = 0
                     let d = 6
@@ -164,7 +164,6 @@ public struct SlidingRuler<V>: View where V: BinaryFloatingPoint, V.Stride: Bina
                     .equatable()
                     .animation(nil)
                     .modifier(InfiniteOffsetEffect(offset: renderedOffset, maxOffset: self.cellWidthOverflow))
-//                self.style.makeCursorBody()
             }
         }
         .modifier(InfiniteMarkOffsetModifier(renderedValue, step: step))

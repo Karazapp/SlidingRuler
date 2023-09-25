@@ -36,7 +36,7 @@ enum StaticSlidingRulerStyleEnvironment {
 }
 
 struct SlidingRulerStyleEnvironmentKey: EnvironmentKey {
-    static var defaultValue: AnySlidingRulerStyle { .init(style: PrimarySlidingRulerStyle()) }
+    static var defaultValue: AnySlidingRulerStyle { .init(style: BlankSlidingRulerStyle()) }
 }
 
 struct SlideRulerCellOverflow: EnvironmentKey {
