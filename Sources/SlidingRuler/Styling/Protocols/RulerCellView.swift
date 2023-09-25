@@ -56,11 +56,11 @@ extension RulerCellView {
         ZStack {
             scale
                 .equatable()
-                .foregroundColor(.init(.label))
+                .foregroundColor(.gray)
                 .clipShape(maskShape)
-            scale
-                .equatable()
-                .foregroundColor(.init(.tertiaryLabel))
+//            scale
+//                .equatable()
+//                .foregroundColor(.init(.tertiaryLabel).opacity(0.3))
         }
         .frame(width: cellWidth)
     }

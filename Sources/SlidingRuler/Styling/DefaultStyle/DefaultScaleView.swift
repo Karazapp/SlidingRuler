@@ -31,9 +31,9 @@ import SwiftUI
 
 struct DefaultScaleView: ScaleView {
     struct ScaleShape: Shape {
-        fileprivate var unitMarkSize: CGSize { .init(width: 3.0, height: 27.0)}
-        fileprivate var halfMarkSize: CGSize { .init(width: UIScreen.main.scale == 3 ? 1.8 : 2.0, height: 19.0) }
-        fileprivate var fractionMarkSize: CGSize { .init(width: 1.0, height: 11.0)}
+        fileprivate var unitMarkSize: CGSize { .init(width: 1.2, height: 100.0)}
+        fileprivate var halfMarkSize: CGSize { .init(width: UIScreen.main.scale == 3 ? 1.2 : 1.4, height: 70) }
+        fileprivate var fractionMarkSize: CGSize { .init(width: 1.0, height: 40.0)}
         
         func path(in rect: CGRect) -> Path {
             let centerX = rect.center.x
@@ -69,7 +69,7 @@ struct DefaultScaleView: ScaleView {
     var halfMarkWidth: CGFloat { shape.halfMarkSize.width }
     var fractionMarkWidth: CGFloat { shape.fractionMarkSize.width }
 
-    init(width: CGFloat, height: CGFloat = 30) {
+    init(width: CGFloat, height: CGFloat = 150) {
         self.width = width
         self.height = height
     }
@@ -78,7 +78,7 @@ struct DefaultScaleView: ScaleView {
 struct ScaleView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            DefaultScaleView(width: 120)
+            DefaultScaleView(width: 80)
         }
         .previewLayout(.sizeThatFits)
     }

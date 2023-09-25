@@ -147,12 +147,24 @@ public struct SlidingRuler<V>: View where V: BinaryFloatingPoint, V.Stride: Bina
         (renderedValue, renderedOffset) = renderingValues()
 
         return FlexibleWidthContainer {
-            ZStack(alignment: .init(horizontal: .center, vertical: self.verticalCursorAlignment)) {
+            VStack(spacing: 4) {
+                Path { path in
+                    let c = 0
+                    let d = 6
+                    path.move(to: CGPoint(x: c, y: c))
+                    path.addLine(to: CGPoint(x: c + d, y: c))
+                    path.addLine(to: CGPoint(x: c + d / 2, y: c + d))
+                    path.closeSubpath()
+                }
+                .strokedPath(StrokeStyle(lineWidth: 3.3, lineJoin: .round))
+                .foregroundColor(Color.orange)
+                .frame(width: 6, height: 6)
+                .padding(.top, 1)
                 Ruler(cells: self.cells, step: self.step, markOffset: self.markOffset, bounds: self.bounds, formatter: self.formatter)
                     .equatable()
                     .animation(nil)
                     .modifier(InfiniteOffsetEffect(offset: renderedOffset, maxOffset: self.cellWidthOverflow))
-                self.style.makeCursorBody()
+//                self.style.makeCursorBody()
             }
         }
         .modifier(InfiniteMarkOffsetModifier(renderedValue, step: step))
@@ -537,7 +549,7 @@ extension SlidingRuler {
     }
     
     private func valueTick() {
-        let fg = UIImpactFeedbackGenerator(style: .light)
+        let fg = UIImpactFeedbackGenerator(style: .heavy)
         fg.impactOccurred(intensity: 0.5)
     }
 }
